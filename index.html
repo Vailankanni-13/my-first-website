@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Human ✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC HIGHLIGHT -->
+    <div class="music-player">
+        🎵 <span>Our Song playing in your head...</span>
+    </div>
+
+    <!-- PAGE 1: THE TRAP (DO YOU LOVE ME?) -->
+    <section id="page1" class="page active">
+        <div class="card animate-pop">
+            <div class="floating-hearts">❤️ 🧸 🌸 🩹</div>
+            <h1>Hey handsome... Quick question. <br><span>Do you love me?</span></h1>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="nextPage('page2')">Yes, obviously! 🥰</button>
+                <button id="noBtn">No. 🙄</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: THE ROMANTIC MOMENTS (PHOTOS 1-4) -->
+    <section id="page2" class="page">
+        <div class="container">
+            <h2 class="section-title">Some of my favorite memories with you... ✨</h2>
+            <p class="aesthetic-para">Every single day spent with you feels like a page ripped out of a beautiful book. You bring so much peace, laughter, and warmth into my life. Thank you for being my safe space, my best friend, and my absolute favorite human being in the universe.</p>
+            
+            <div class="photo-grid">
+                <div class="photo-card"><img src="photo1.jpeg" alt="Memory 1"><p>Where it all felt real ✨</p></div>
+                <div class="photo-card"><img src="photo2.jpeg" alt="Memory 2"><p>Your laugh is my favorite sound 🤍</p></div>
+                <div class="photo-card"><img src="photo3.jpeg" alt="Memory 3"><p>Safe in your arms 🧸</p></div>
+                <div class="photo-card"><img src="photo4.jpeg" alt="Memory 4"><p>Forever to go! 🌸</p></div>
+            </div>
+
+            <button class="next-page-btn" onclick="nextPage('page3')">Click here to continue... 👀 ➡️</button>
+        </div>
+    </section>
+
+    <!-- PAGE 3: THE INTERACTIVE QUIZ (NEW SECTION!) -->
+    <section id="page3" class="page">
+        <div class="card">
+            <h2>Time for a mini test! 📝</h2>
+            <p class="quiz-instruction">Answer correctly, or you will hear about it later.</p>
+            
+            <div class="quiz-box">
+                <p class="question">Who is the most dramatic person in this relationship?</p>
+                <button class="quiz-option" onclick="quizAnswer(false, this)">You (Boyfriend)</button>
+                <button class="quiz-option" onclick="quizAnswer(true, this)">Me (Girlfriend) 👑</button>
+            </div>
+
+            <div id="quizResult" class="quiz-result"></div>
+            <button id="quizNextBtn" class="next-page-btn" style="display:none; margin-top: 1.5rem;" onclick="nextPage('page4')">Proceed to your reward ➡️</button>
+        </div>
+    </section>
+
+    <!-- PAGE 4: THE ANNOYING MEMORIES & TEXT (PHOTOS 5-8) -->
+    <section id="page4" class="page">
+        <div class="container">
+            <h2 class="section-title">And here is a reminder of how annoying you are... ❤️‍🔥</h2>
+            <p class="aesthetic-para">Even though you steal all the blankets, take hours to reply to my messages sometimes, and make the absolute worst dad jokes known to mankind... I wouldn't trade your goofy self for anything else. You are completely stuck with me!</p>
+            
+            <div class="photo-grid">
+                <div class="photo-card"><img src="photo5.jpeg" alt="Memory 5"><p>Exhibit A: Being dramatic 💀</p></div>
+                <div class="photo-card"><img src="photo6.jpeg" alt="Memory 6"><p>Stealing my food again 🍕</p></div>
+                <div class="photo-card"><img src="photo7.jpeg" alt="Memory 7"><p>That silly face you make 🤪</p></div>
+                <div class="photo-card"><img src="photo8.jpeg" alt="Memory 8"><p>But I still love you best 🔒</p></div>
+            </div>
+
+            <button class="next-page-btn" onclick="nextPage('page5')">One last thing... 👑</button>
+        </div>
+    </section>
+
+    <!-- PAGE 5: FINAL LOVE NOTE -->
+    <section id="page5" class="page">
+        <div class="card text-center final-card">
+            <h2>Happy Boyfriend's Day, My Love! 🌎🎈</h2>
+            <p class="love-letter">
+                Thank you for loving me unconditionally, for listening to my long, chaotic rants, and for always knowing exactly how to make me smile. You make the world a much brighter place just by existing. 
+                <br><br>
+                I hope this tiny corner of the internet serves as a little reminder of how incredibly special you are to me, not just today, but every single second of every day. I love you more than words can say.
+            </p>
+            <div class="signature">Forever Yours, <br>❤️ xoxo</div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT FOR NAVIGATION, RUNAWAY BUTTON, & QUIZ -->
+    <script>
+        // Page Transitions
+        function nextPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Runaway "No" Button Logic
+        const noBtn = document.getElementById('noBtn');
+        const phrases = [
+            "Why don't you love me? Try again! 🥺",
+            "Error 404: Option Not Found ❌",
+            "Nice try, click YES! 😏",
+            "Are you sure? Think again... 🤔",
+            "Wrong button babe! 👀"
+        ];
+
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            noBtn.innerText = randomPhrase;
+        });
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("How did you even manage to click this?! Click Yes! 😂");
+        });
+
+        // Quiz Evaluation Logic
+        function quizAnswer(isCorrect, element) {
+            const resultDiv = document.getElementById('quizResult');
+            const nextBtn = document.getElementById('quizNextBtn');
+            
+            if(isCorrect) {
+                element.style.backgroundColor = "#8eff8b";
+                resultDiv.innerHTML = "Correct! You know what's good for you. 😉";
+                resultDiv.style.color = "#2b7a29";
+                nextBtn.style.display = "inline-block";
+            } else {
+                element.style.backgroundColor = "#ff8b8b";
+                resultDiv.innerHTML = "Wrong answer! Try the other option if you value your safety. 💀";
+                resultDiv.style.color = "#b84b4b";
+            }
+        }
+    </script>
+</body>
+</html>
